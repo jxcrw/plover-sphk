@@ -27,7 +27,7 @@ from plover.oslayer.linux.keyboardlayout_wayland import (
 )
 from plover.output.keyboard import GenericKeyboardEmulation
 from plover.machine.keyboard_capture import Capture
-from plover.key_combo import parse_key_combo
+from plover.key_combo import parse_key_combo, add_modifiers_aliases
 from plover import log
 
 # EV keycodes of keys considered modifiers when not able to automatically be
@@ -74,6 +74,7 @@ class KeyboardEmulation(GenericKeyboardEmulation):
                         keymap, modifier_index_to_xkb_keycode
                     )
                 )
+                add_modifiers_aliases(self._key_to_keycodeinfo)
                 log.debug("Retrieved Wayland keymap: %s", self._key_to_keycodeinfo)
 
                 # Verify that no modifier requires modifiers to be pressed in the generated keymap
