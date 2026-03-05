@@ -1,3 +1,21 @@
+# v5.2.3 (2026-03-05)
+
+
+## Features
+
+No significant changes.
+
+## Bugfixes
+
+### macOS
+
+- Fix DMG background image display issues on macOS 26.2 Tahoe. (#1821)
+- Fix missing menu bar icon on macOS 26. (#1822)
+
+## API
+
+No significant changes.
+
 # v5.2.2 (2026-02-10)
 
 
@@ -13,7 +31,7 @@ No significant changes.
 
 ### macOS
 
-- Fixed startup hang when launching Plover on Intel Macs (#1820)
+- Fix startup hang when launching Plover on Intel Macs. (#1820)
 
 ## API
 
