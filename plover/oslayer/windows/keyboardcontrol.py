@@ -45,6 +45,18 @@ SCANCODE_TO_KEY = {
     68: "F10",
     87: "F11",
     88: "F12",
+    100: 'F13',
+    101: 'F14',
+    102: 'F15',
+    103: 'F16',
+    104: 'F17',
+    105: 'F18',
+    106: 'F19',
+    107: 'F20',
+    108: 'F21',
+    109: 'F22',
+    110: 'F23',
+    118: 'F24',
     41: "`",
     2: "1",
     3: "2",
@@ -107,6 +119,9 @@ SCANCODE_TO_KEY = {
     77: "Right",
     15: "Tab",
     72: "Up",
+    55: "PAST",
+    78: "PPLS",
+    74: "PMNS",
 }
 
 KEY_TO_SCANCODE = dict(zip(SCANCODE_TO_KEY.values(), SCANCODE_TO_KEY.keys()))

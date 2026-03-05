@@ -73,6 +73,18 @@ KEYCODE_TO_KEY = {
     76: "F10",
     95: "F11",
     96: "F12",
+    191: "F13",
+    192: "F14",
+    193: "F15",
+    194: "F16",
+    195: "F17",
+    196: "F18",
+    197: "F19",
+    198: "F20",
+    199: "F21",
+    200: "F22",
+    201: "F23",
+    202: "F24",
     # Number row.
     49: "`",
     10: "1",
@@ -140,6 +152,10 @@ KEYCODE_TO_KEY = {
     23: "Tab",
     111: "Up",
     65: "space",
+    63 : "PAST",
+    86 : "PPLS",
+    82 : "PMNS",
+    106: "PSLS",
 }
 
 KEY_TO_KEYCODE = dict(zip(KEYCODE_TO_KEY.values(), KEYCODE_TO_KEY.keys()))
