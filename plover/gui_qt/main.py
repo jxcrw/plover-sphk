@@ -115,6 +115,10 @@ def default_message_handler(msg_type, msg_log_context, msg_string):
 
 
 def main(config, controller):
+    # Wayland Fix: Disable protocol-heavy IME modules ONLY on Wayland to prevent rendering crashes.
+    if os.environ.get("XDG_SESSION_TYPE") == "wayland" or os.environ.get("WAYLAND_DISPLAY"):
+        os.environ["QT_IM_MODULE"] = "none"
+
     # Setup internationalization support.
     use_qt_notifications = not log.has_platform_handler()
     # Log GUI exceptions that make it back to the event loop.
