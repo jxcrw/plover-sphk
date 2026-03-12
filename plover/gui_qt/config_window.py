@@ -15,6 +15,7 @@ from PySide6.QtWidgets import (
     QComboBox,
     QDialog,
     QDialogButtonBox,
+    QDoubleSpinBox,
     QFileDialog,
     QFormLayout,
     QFrame,
@@ -68,6 +69,20 @@ class BooleanOption(QCheckBox):
 class IntOption(QSpinBox):
     def __init__(self, maximum=None, minimum=None):
         super().__init__()
+        if maximum is not None:
+            self.setMaximum(maximum)
+        if minimum is not None:
+            self.setMinimum(minimum)
+
+
+class FloatOption(QDoubleSpinBox):
+    _DECIMALS = 15  # float64 ceiling.
+    _STEP = 0.001   # Calibrated to IME protocol floor estimate (~1 µs = 0.001 ms).
+
+    def __init__(self, maximum=None, minimum=None):
+        super().__init__()
+        self.setDecimals(self._DECIMALS)
+        self.setSingleStep(self._STEP)
         if maximum is not None:
             self.setMaximum(maximum)
         if minimum is not None:
@@ -514,7 +529,7 @@ class ConfigWindow(QDialog, Ui_ConfigWindow, WindowStateMixin):
                         _("Key press delay (ms):"),
                         "time_between_key_presses",
                         partial(
-                            IntOption,
+                            FloatOption,
                             maximum=100000,
                             minimum=MINIMUM_TIME_BETWEEN_KEY_PRESSES,
                         ),

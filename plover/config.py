@@ -159,6 +159,31 @@ def int_option(name, default, minimum, maximum, section, option=None):
     return ConfigOption(name, lambda c, k: default, getter, setter, validate, None)
 
 
+def float_option(name, default, minimum, maximum, section, option=None):
+    """Like int_option but accepts decimal values (e.g. sub-millisecond delays)."""
+    option = option or name
+
+    def getter(config, key):
+        return config._config[section][option]
+
+    def setter(config, key, value):
+        config._set(section, option, str(value))
+
+    def validate(config, key, value):
+        try:
+            value = float(value)
+        except ValueError as e:
+            raise InvalidConfigOption(value, default) from e
+        if (minimum is not None and value < minimum) or (
+            maximum is not None and value > maximum
+        ):
+            message = "%s not in [%s, %s]" % (value, minimum or "-∞", maximum or "∞")
+            raise InvalidConfigOption(value, default, message)
+        return value
+
+    return ConfigOption(name, lambda c, k: default, getter, setter, validate, None)
+
+
 def boolean_option(name, default, section, option=None):
     option = option or name
 
@@ -447,7 +472,7 @@ class Config:
                 None,
                 OUTPUT_CONFIG_SECTION,
             ),
-            int_option(
+            float_option(
                 "time_between_key_presses",
                 DEFAULT_TIME_BETWEEN_KEY_PRESSES,
                 MINIMUM_TIME_BETWEEN_KEY_PRESSES,
