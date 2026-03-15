@@ -422,10 +422,10 @@ HANDLED_EV_KEYCODE_TO_KEY = {
     e.KEY_RIGHT: "Right",
     e.KEY_TAB: "Tab",
     e.KEY_UP: "Up",
-    e.KEY_KPASTERISK: "*",
-    e.KEY_KPPLUS: "+",
-    e.KEY_KPMINUS: "-",
-    e.KEY_KPSLASH: "/",
+    e.KEY_KPASTERISK: "PAST",
+    e.KEY_KPPLUS: "PPLS",
+    e.KEY_KPMINUS: "PMNS",
+    e.KEY_KPSLASH: "PSLS",
 }
 
 # Make sure no keys missing. The last 3 are "\r\x0b\x0c" which don't need to be mapped.
